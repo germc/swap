@@ -22,6 +22,7 @@
 		D2C5389917868D4F00F2C8BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C5387817868D4F00F2C8BA /* UIKit.framework */; };
 		D2C538A117868D4F00F2C8BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2C5389F17868D4F00F2C8BA /* InfoPlist.strings */; };
 		D2C538A317868D4F00F2C8BA /* SwapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C538A217868D4F00F2C8BA /* SwapTests.m */; };
+		D2C538AD17868D8300F2C8BA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C538AC17868D8300F2C8BA /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D2C5389E17868D4F00F2C8BA /* SwapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SwapTests-Info.plist"; sourceTree = "<group>"; };
 		D2C538A017868D4F00F2C8BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2C538A217868D4F00F2C8BA /* SwapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwapTests.m; sourceTree = "<group>"; };
+		D2C538AC17868D8300F2C8BA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			files = (
 				D2C5387717868D4F00F2C8BA /* CoreGraphics.framework in Frameworks */,
 				D2C5387917868D4F00F2C8BA /* UIKit.framework in Frameworks */,
+				D2C538AD17868D8300F2C8BA /* Parse.framework in Frameworks */,
 				D2C5387517868D4F00F2C8BA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +106,7 @@
 		D2C5387317868D4F00F2C8BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2C538AC17868D8300F2C8BA /* Parse.framework */,
 				D2C5387417868D4F00F2C8BA /* Foundation.framework */,
 				D2C5387617868D4F00F2C8BA /* CoreGraphics.framework */,
 				D2C5387817868D4F00F2C8BA /* UIKit.framework */,
@@ -117,7 +121,6 @@
 				D2C5388317868D4F00F2C8BA /* SWPAppDelegate.h */,
 				D2C5388417868D4F00F2C8BA /* SWPAppDelegate.m */,
 				D2C5388617868D4F00F2C8BA /* Main_iPhone.storyboard */,
-				D2C5388917868D4F00F2C8BA /* Main_iPad.storyboard */,
 				D2C5388C17868D4F00F2C8BA /* SWPViewController.h */,
 				D2C5388D17868D4F00F2C8BA /* SWPViewController.m */,
 				D2C5388F17868D4F00F2C8BA /* Images.xcassets */,
@@ -129,6 +132,7 @@
 		D2C5387B17868D4F00F2C8BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D2C5388917868D4F00F2C8BA /* Main_iPad.storyboard */,
 				D2C5387C17868D4F00F2C8BA /* Swap-Info.plist */,
 				D2C5387D17868D4F00F2C8BA /* InfoPlist.strings */,
 				D2C5388017868D4F00F2C8BA /* main.m */,
@@ -389,6 +393,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swap/Swap-Prefix.pch";
 				INFOPLIST_FILE = "Swap/Swap-Info.plist";
@@ -402,6 +410,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swap/Swap-Prefix.pch";
 				INFOPLIST_FILE = "Swap/Swap-Info.plist";
