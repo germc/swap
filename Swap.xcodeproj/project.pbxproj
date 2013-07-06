@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D29CB99A1787E74C00C658A9 /* SWPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D29CB9991787E74C00C658A9 /* SWPMainViewController.m */; };
 		D2C5387517868D4F00F2C8BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C5387417868D4F00F2C8BA /* Foundation.framework */; };
 		D2C5387717868D4F00F2C8BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C5387617868D4F00F2C8BA /* CoreGraphics.framework */; };
 		D2C5387917868D4F00F2C8BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C5387817868D4F00F2C8BA /* UIKit.framework */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D29CB9981787E74C00C658A9 /* SWPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMainViewController.h; sourceTree = "<group>"; };
+		D29CB9991787E74C00C658A9 /* SWPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMainViewController.m; sourceTree = "<group>"; };
 		D2C5387117868D4F00F2C8BA /* Swap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C5387417868D4F00F2C8BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2C5387617868D4F00F2C8BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -173,6 +176,8 @@
 				D2C5388317868D4F00F2C8BA /* SWPAppDelegate.h */,
 				D2C5388417868D4F00F2C8BA /* SWPAppDelegate.m */,
 				D2C5388617868D4F00F2C8BA /* Main_iPhone.storyboard */,
+				D29CB9981787E74C00C658A9 /* SWPMainViewController.h */,
+				D29CB9991787E74C00C658A9 /* SWPMainViewController.m */,
 				D2C538C8178692BA00F2C8BA /* SWPLoginViewController.h */,
 				D2C538C9178692BA00F2C8BA /* SWPLoginViewController.m */,
 				D2C5388F17868D4F00F2C8BA /* Images.xcassets */,
@@ -310,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29CB99A1787E74C00C658A9 /* SWPMainViewController.m in Sources */,
 				D2C538CA178692BA00F2C8BA /* SWPLoginViewController.m in Sources */,
 				D2C5388117868D4F00F2C8BA /* main.m in Sources */,
 				D2C5388517868D4F00F2C8BA /* SWPAppDelegate.m in Sources */,
@@ -535,6 +541,7 @@
 				D2C538A817868D4F00F2C8BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2C538A917868D4F00F2C8BA /* Build configuration list for PBXNativeTarget "SwapTests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +550,7 @@
 				D2C538AB17868D4F00F2C8BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
