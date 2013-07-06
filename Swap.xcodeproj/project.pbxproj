@@ -36,7 +36,6 @@
 		D2C538C31786905A00F2C8BA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C538C21786905A00F2C8BA /* Security.framework */; };
 		D2C538C51786906000F2C8BA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C538C41786906000F2C8BA /* StoreKit.framework */; };
 		D2C538C71786906C00F2C8BA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C538C61786906C00F2C8BA /* SystemConfiguration.framework */; };
-		D2C538CA178692BA00F2C8BA /* SWPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C538C9178692BA00F2C8BA /* SWPLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,8 +83,6 @@
 		D2C538C21786905A00F2C8BA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2C538C41786906000F2C8BA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D2C538C61786906C00F2C8BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		D2C538C8178692BA00F2C8BA /* SWPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPLoginViewController.h; sourceTree = "<group>"; };
-		D2C538C9178692BA00F2C8BA /* SWPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +175,6 @@
 				D2C5388617868D4F00F2C8BA /* Main_iPhone.storyboard */,
 				D29CB9981787E74C00C658A9 /* SWPMainViewController.h */,
 				D29CB9991787E74C00C658A9 /* SWPMainViewController.m */,
-				D2C538C8178692BA00F2C8BA /* SWPLoginViewController.h */,
-				D2C538C9178692BA00F2C8BA /* SWPLoginViewController.m */,
 				D2C5388F17868D4F00F2C8BA /* Images.xcassets */,
 				D2C5387B17868D4F00F2C8BA /* Supporting Files */,
 			);
@@ -316,7 +311,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D29CB99A1787E74C00C658A9 /* SWPMainViewController.m in Sources */,
-				D2C538CA178692BA00F2C8BA /* SWPLoginViewController.m in Sources */,
 				D2C5388117868D4F00F2C8BA /* main.m in Sources */,
 				D2C5388517868D4F00F2C8BA /* SWPAppDelegate.m in Sources */,
 			);
