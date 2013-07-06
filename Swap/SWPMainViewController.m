@@ -42,7 +42,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    NSString *urlString = @"https://api.foursquare.com/v2/venues/trending?ll=40.7,-74&oauth_token=";
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"GET";
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSMutableDictionary *resultData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"%@", resultData);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
