@@ -14,6 +14,9 @@
 {
     [Parse setApplicationId:@"SSHWySRmkEhYsF7sOx69EUlPZO6CCHVSQXlnK0Rn"
                   clientKey:@"zfrbCMHKT2AzhAZTFx7yPaoSRT88ujRLyhumi8uJ"];
+    
+    [PFFacebookUtils initializeFacebook];
+    [PFTwitterUtils initializeWithConsumerKey:@"gUUXEpVZAzORmC8xgZ2m1Q" consumerSecret:@"Yo3qYZ3YU5KwDfZs3WAvGn8M11Y9trIvbpdwU1Lmqc"];
     return YES;
 }
 							
@@ -44,4 +47,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [PFFacebookUtils handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [PFFacebookUtils handleOpenURL:url];
+}
 @end

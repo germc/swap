@@ -36,6 +36,9 @@
 		D2C538C31786905A00F2C8BA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C538C21786905A00F2C8BA /* Security.framework */; };
 		D2C538C51786906000F2C8BA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C538C41786906000F2C8BA /* StoreKit.framework */; };
 		D2C538C71786906C00F2C8BA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C538C61786906C00F2C8BA /* SystemConfiguration.framework */; };
+		D2C6FE8E17894026008CD2E1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C6FE8D17894026008CD2E1 /* FacebookSDK.framework */; };
+		D2C6FE911789406E008CD2E1 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2C6FE8F1789406E008CD2E1 /* FacebookSDKResources.bundle */; };
+		D2C6FE921789406E008CD2E1 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2C6FE901789406E008CD2E1 /* FBUserSettingsViewResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,9 @@
 		D2C538C21786905A00F2C8BA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2C538C41786906000F2C8BA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D2C538C61786906C00F2C8BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D2C6FE8D17894026008CD2E1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		D2C6FE8F1789406E008CD2E1 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		D2C6FE901789406E008CD2E1 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../../FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 				D2C538C31786905A00F2C8BA /* Security.framework in Frameworks */,
 				D2C538C11786905300F2C8BA /* QuartzCore.framework in Frameworks */,
 				D2C538BF1786904E00F2C8BA /* MobileCoreServices.framework in Frameworks */,
+				D2C6FE8E17894026008CD2E1 /* FacebookSDK.framework in Frameworks */,
 				D2C538BD1786904800F2C8BA /* libz.1.1.3.dylib in Frameworks */,
 				D2C538BB1786904000F2C8BA /* libsqlite3.dylib in Frameworks */,
 				D2C538B91786903300F2C8BA /* CoreLocation.framework in Frameworks */,
@@ -145,6 +152,9 @@
 		D2C5387317868D4F00F2C8BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2C6FE8F1789406E008CD2E1 /* FacebookSDKResources.bundle */,
+				D2C6FE901789406E008CD2E1 /* FBUserSettingsViewResources.bundle */,
+				D2C6FE8D17894026008CD2E1 /* FacebookSDK.framework */,
 				D2C538C61786906C00F2C8BA /* SystemConfiguration.framework */,
 				D2C538C41786906000F2C8BA /* StoreKit.framework */,
 				D2C538C21786905A00F2C8BA /* Security.framework */,
@@ -291,6 +301,8 @@
 				D2C5388B17868D4F00F2C8BA /* Main_iPad.storyboard in Resources */,
 				D2C5389017868D4F00F2C8BA /* Images.xcassets in Resources */,
 				D2C5388817868D4F00F2C8BA /* Main_iPhone.storyboard in Resources */,
+				D2C6FE911789406E008CD2E1 /* FacebookSDKResources.bundle in Resources */,
+				D2C6FE921789406E008CD2E1 /* FBUserSettingsViewResources.bundle in Resources */,
 				D2C5387F17868D4F00F2C8BA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +460,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../../FacebookSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swap/Swap-Prefix.pch";
@@ -466,6 +479,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../../FacebookSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swap/Swap-Prefix.pch";

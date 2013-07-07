@@ -33,6 +33,8 @@
         PFSignUpViewController *signupViewController = [[PFSignUpViewController alloc] init];
         [signupViewController setDelegate:self];
         
+        [loginViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
+        [loginViewController setFields:PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDefault | PFLogInFieldsDismissButton];
         [loginViewController setSignUpController:signupViewController];
         
         [self presentViewController:loginViewController animated:YES completion:NULL];
@@ -43,19 +45,19 @@
 {
     [super viewDidLoad];
     
-    NSString *urlString = @"https://api.foursquare.com/v2/venues/trending?ll=40.7,-74&oauth_token=";
-    
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"GET";
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
-        NSMutableDictionary *resultData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        NSLog(@"%@", resultData);
-    }];
+//    NSString *urlString = @"https://api.foursquare.com/v2/venues/trending?ll=40.7,-74&oauth_token=";
+//    
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//    request.HTTPMethod = @"GET";
+//    
+//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+//    
+//    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+//        NSMutableDictionary *resultData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+//        NSLog(@"%@", resultData);
+//    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,6 +122,7 @@
 }
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    NSLog(@"hello there buddy");
     [self dismissViewControllerAnimated:YES completion:NULL]; }
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
