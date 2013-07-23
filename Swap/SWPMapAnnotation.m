@@ -10,14 +10,14 @@
 
 @implementation SWPMapAnnotation
 
--(id)initWithCoordinates:(CLLocationCoordinate2D)coordinate title:(NSString *)title subTitle:(NSString *)subTitle
+-(id)initWithCoordinates:(CLLocationCoordinate2D)coordinate title:(NSString *)title subtitle:(NSString *)subtitle
 {
     self = [super init];
     
     if (self) {
         _coordinate = coordinate;
         _title = title;
-        _subTitle = subTitle;
+        _subtitle = subtitle;
     }
     return self;
 }

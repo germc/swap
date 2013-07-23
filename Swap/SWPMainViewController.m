@@ -7,6 +7,7 @@
 //
 
 #import "SWPMainViewController.h"
+#import "SWPMapAnnotation.h"
 
 @interface SWPMainViewController ()
 
@@ -18,6 +19,7 @@
     NSMutableArray *results;
     CLLocationCoordinate2D _zoomlocation;
     MKCoordinateRegion _viewRegion;
+    NSMutableArray *mapAnnotations;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -61,6 +63,8 @@
     _trendingTable.dataSource = self;
     _trendingTable.delegate = self;
     
+    self.mapView.delegate = self;
+    
     self.tabBarItem.badgeValue = @"R";
     
     self.view.backgroundColor = [UIColor redColor];
@@ -75,21 +79,35 @@
     request.HTTPMethod = @"GET";
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    mapAnnotations = [[NSMutableArray alloc] init];
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
         NSMutableDictionary *resultData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 //        NSLog(@"%@", resultData);
         
         results = [[resultData objectForKey:@"response"] objectForKey:@"venues"];
-        NSLog(@"%@", results);
+//        NSLog(@"%@", results);
         
         
         for (NSDictionary *item in results)
         {
-//            NSLog(@"%@", item[@"canonicalUrl"]);
-//            NSLog(@"%@", item[@"contact"]);
-//            NSLog(@"%@", item[@"location"][@"address"]);
+//            NSLog(@"%@", item[@"name"]);
+//            NSLog(@"%@", item[@"url"]);
+//            NSLog(@"%@", item[@"location"][@"lat"]);
+//            NSLog(@"%@", item[@"location"][@"lng"]);
+            float lat = [item[@"location"][@"lat"] floatValue];
+            float lng = [item[@"location"][@"lng"] floatValue];
+            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(lat, lng);
+            
+            NSString *name = item[@"name"];
+            NSString *bizUrl = item[@"url"];
+            
+            SWPMapAnnotation *annot = [[SWPMapAnnotation alloc] initWithCoordinates:coord title:name subtitle:bizUrl];
+            
+            [mapAnnotations addObject:annot];
         }
+        
+        [self.mapView addAnnotations:mapAnnotations];
     }];
 }
 
@@ -194,5 +212,22 @@
 {
     NSLog(@"disclosure button tapped");
 }
+
+//-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+//{
+//    static NSString *ident = @"trendingMapAnnot";
+//    if ([annotation isKindOfClass:[SWPMapAnnotation class]]) {
+//        MKAnnotationView *annotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:ident];
+//        
+//        if (annotationView == nil) {
+//            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ident];
+//            annotationView.enabled = YES;
+//        } else {
+//            annotationView.annotation = annotation;
+//        }
+//        return annotationView;
+//    }
+//    return nil;
+//}
 
 @end
