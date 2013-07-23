@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2632B66179F07C2005433DB /* SWPMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2632B65179F07C2005433DB /* SWPMapAnnotation.m */; };
 		D29CB99A1787E74C00C658A9 /* SWPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D29CB9991787E74C00C658A9 /* SWPMainViewController.m */; };
 		D2C5387517868D4F00F2C8BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C5387417868D4F00F2C8BA /* Foundation.framework */; };
 		D2C5387717868D4F00F2C8BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C5387617868D4F00F2C8BA /* CoreGraphics.framework */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2632B64179F07C2005433DB /* SWPMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMapAnnotation.h; sourceTree = "<group>"; };
+		D2632B65179F07C2005433DB /* SWPMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMapAnnotation.m; sourceTree = "<group>"; };
 		D29CB9981787E74C00C658A9 /* SWPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMainViewController.h; sourceTree = "<group>"; };
 		D29CB9991787E74C00C658A9 /* SWPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMainViewController.m; sourceTree = "<group>"; };
 		D2C5387117868D4F00F2C8BA /* Swap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +188,8 @@
 				D2C5388617868D4F00F2C8BA /* Main_iPhone.storyboard */,
 				D29CB9981787E74C00C658A9 /* SWPMainViewController.h */,
 				D29CB9991787E74C00C658A9 /* SWPMainViewController.m */,
+				D2632B64179F07C2005433DB /* SWPMapAnnotation.h */,
+				D2632B65179F07C2005433DB /* SWPMapAnnotation.m */,
 				D2C5388F17868D4F00F2C8BA /* Images.xcassets */,
 				D2C5387B17868D4F00F2C8BA /* Supporting Files */,
 			);
@@ -322,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2632B66179F07C2005433DB /* SWPMapAnnotation.m in Sources */,
 				D29CB99A1787E74C00C658A9 /* SWPMainViewController.m in Sources */,
 				D2C5388117868D4F00F2C8BA /* main.m in Sources */,
 				D2C5388517868D4F00F2C8BA /* SWPAppDelegate.m in Sources */,
