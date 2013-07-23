@@ -27,6 +27,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Home" id="RVK-PR-tyf"/>
                     <connections>
+                        <outlet property="mapView" destination="UpP-t6-Lww" id="Y2K-KT-CEd"/>
                         <outlet property="trendingTable" destination="e59-eC-7vH" id="ABv-sS-Fti"/>
                     </connections>
                 </viewController>
@@ -71,6 +72,16 @@
             <point key="canvasLocation" x="-420" y="-105"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="SWPMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SWPMainViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mainTabBar" candidateClass="UITabBar"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="trendingTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

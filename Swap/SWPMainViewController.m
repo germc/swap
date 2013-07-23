@@ -16,6 +16,8 @@
 {
     CLLocationManager *locationManager;
     NSMutableArray *results;
+    CLLocationCoordinate2D _zoomlocation;
+    MKCoordinateRegion _viewRegion;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,6 +45,13 @@
 //        
 //        [self presentViewController:loginViewController animated:YES completion:NULL];
 //    }
+    
+    _zoomlocation.latitude = locationManager.location.coordinate.latitude;
+    _zoomlocation.longitude = locationManager.location.coordinate.longitude;
+    
+    _viewRegion = MKCoordinateRegionMakeWithDistance(_zoomlocation, 2000, 2000);
+    
+    [_mapView setRegion:_viewRegion animated:YES];
 }
 
 - (void)viewDidLoad

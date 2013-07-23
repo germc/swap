@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <MapKit/MapKit.h>
 
 @interface SWPMainViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *trendingTable;
 
 @property (weak, nonatomic) IBOutlet UITabBar *mainTabBar;
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
