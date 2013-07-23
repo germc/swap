@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface SWPMainViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface SWPMainViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *trendingTable;
+
+@property (weak, nonatomic) IBOutlet UITabBar *mainTabBar;
 
 @end

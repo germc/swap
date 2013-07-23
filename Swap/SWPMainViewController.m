@@ -13,6 +13,10 @@
 @end
 
 @implementation SWPMainViewController
+{
+    CLLocationManager *locationManager;
+    NSMutableArray *results;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,38 +30,58 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (![PFUser currentUser]) {
-        PFLogInViewController *loginViewController = [[PFLogInViewController alloc] init];
-        [loginViewController setDelegate:self];
-        
-        PFSignUpViewController *signupViewController = [[PFSignUpViewController alloc] init];
-        [signupViewController setDelegate:self];
-        
-        [loginViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
-        [loginViewController setFields:PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDefault | PFLogInFieldsDismissButton];
-        [loginViewController setSignUpController:signupViewController];
-        
-        [self presentViewController:loginViewController animated:YES completion:NULL];
-    }
+//    if (![PFUser currentUser]) {
+//        PFLogInViewController *loginViewController = [[PFLogInViewController alloc] init];
+//        [loginViewController setDelegate:self];
+//        
+//        PFSignUpViewController *signupViewController = [[PFSignUpViewController alloc] init];
+//        [signupViewController setDelegate:self];
+//        
+//        [loginViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
+//        [loginViewController setFields:PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDefault | PFLogInFieldsDismissButton];
+//        [loginViewController setSignUpController:signupViewController];
+//        
+//        [self presentViewController:loginViewController animated:YES completion:NULL];
+//    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-//    NSString *urlString = @"https://api.foursquare.com/v2/venues/trending?ll=40.7,-74&oauth_token=";
-//    
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-//    request.HTTPMethod = @"GET";
-//    
-//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//    
-//    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
-//        NSMutableDictionary *resultData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    _trendingTable.dataSource = self;
+    _trendingTable.delegate = self;
+    
+    self.tabBarItem.badgeValue = @"R";
+    
+    self.view.backgroundColor = [UIColor redColor];
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager startUpdatingLocation];
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/trending?ll=%f,%f&oauth_token=OE1Q3UHXI2TB1PEAL4JM0CYX33OPX12WPPI5OOX5CIYA5LN1&v=20130708", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"GET";
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSMutableDictionary *resultData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 //        NSLog(@"%@", resultData);
-//    }];
+        
+        results = [[resultData objectForKey:@"response"] objectForKey:@"venues"];
+        NSLog(@"%@", results);
+        
+        
+        for (NSDictionary *item in results)
+        {
+//            NSLog(@"%@", item[@"canonicalUrl"]);
+//            NSLog(@"%@", item[@"contact"]);
+//            NSLog(@"%@", item[@"location"][@"address"]);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,5 +157,33 @@
     NSLog(@"User dismissed the signUpViewController");
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *trendingTableIdentifier = @"TrendingTableIdentifier";
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:trendingTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:trendingTableIdentifier];
+    }
+    //    cell.textLabel.text = [NSString stringWithFormat:@"Hello there %d", indexPath.row + 1];
+    //    cell.detailTextLabel.text = @"bye bye";
+    NSDictionary *tableItem = [results objectAtIndex:indexPath.row];
+    //    NSLog(@"%@", tableItem);
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", tableItem[@"name"]];
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"disclosure button tapped");
+}
 
 @end
