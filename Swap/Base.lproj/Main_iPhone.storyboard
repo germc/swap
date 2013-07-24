@@ -79,6 +79,10 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Search" id="BVR-tI-Lha"/>
+                    <connections>
+                        <outlet property="searchField" destination="gtY-B3-OVQ" id="e57-Dz-1P3"/>
+                        <outlet property="searchTableView" destination="xKd-KG-kYx" id="voA-nX-vFg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dso-eq-ASp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,6 +100,10 @@
         </class>
         <class className="SWPSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SWPSearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="searchTableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

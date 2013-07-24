@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SWPSearchViewController : UIViewController
+@interface SWPSearchViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *searchField;
+@property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 
 @end
