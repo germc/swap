@@ -18,29 +18,20 @@
     CLLocationManager *locationManager;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _searchField.delegate = self;
+    self.searchField.delegate = self;
     
-    _searchTableView.delegate = self;
-    _searchTableView.dataSource = self;
+    self.searchTableView.delegate = self;
+    self.searchTableView.dataSource = self;
     
     locationManager = [[CLLocationManager alloc] init];
     [locationManager startUpdatingLocation];
     
     [self searchForPOI];
-    [_searchTableView reloadData];
+//    [_searchTableView reloadData];
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:recognizer];
@@ -58,7 +49,7 @@
     if ([self.searchField.text isEqualToString:@""]) {
         urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/trending?ll=%f,%f&oauth_token=OE1Q3UHXI2TB1PEAL4JM0CYX33OPX12WPPI5OOX5CIYA5LN1&v=20130708", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
     } else {
-        urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&query=%@&oauth_token=OE1Q3UHXI2TB1PEAL4JM0CYX33OPX12WPPI5OOX5CIYA5LN1&v=20130708", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude, self.searchField.text];
+        urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&query=%@&oauth_token=OE1Q3UHXI2TB1PEAL4JM0CYX33OPX12WPPI5OOX5CIYA5LN1&v=20130708", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude, [self.searchField.text stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
     }
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -73,6 +64,7 @@
         
         results = [[resultData objectForKey:@"response"] objectForKey:@"venues"];
     }];
+    [self.searchTableView reloadData];
 }
 
 #pragma mark UITableView delegates
@@ -86,7 +78,7 @@
 {
     static NSString *resultTableID = @"resultTableCell";
     
-    UITableViewCell *cell = [_searchTableView dequeueReusableCellWithIdentifier:resultTableID];
+    UITableViewCell *cell = [self.searchTableView dequeueReusableCellWithIdentifier:resultTableID];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:resultTableID];
     }
@@ -106,7 +98,7 @@
         [self searchForPOI];
 //        [_searchTableView reloadData];
     }
-    [_searchTableView reloadData];
+    [self.searchTableView reloadData];
     return YES;
 }
 
