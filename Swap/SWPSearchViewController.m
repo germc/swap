@@ -89,13 +89,18 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.searchField resignFirstResponder];
+    [self dismissKeyboard];
     if (self.searchField.text.length > 0) {
         [self searchForPOI];
         [_searchTableView reloadData];
     }
     
     return YES;
+}
+
+-(void)dismissKeyboard
+{
+    [self.searchField resignFirstResponder];
 }
 
 @end
