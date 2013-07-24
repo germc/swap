@@ -84,7 +84,16 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"daf"];
+    static NSString *resultTableID = @"resultTableCell";
+    
+    UITableViewCell *cell = [_searchTableView dequeueReusableCellWithIdentifier:resultTableID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:resultTableID];
+    }
+    NSDictionary *item = [results objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", item[@"name"]];
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
     return cell;
 }
 
@@ -95,9 +104,9 @@
     [self dismissKeyboard];
     if (self.searchField.text.length > 0) {
         [self searchForPOI];
-        [_searchTableView reloadData];
+//        [_searchTableView reloadData];
     }
-    
+    [_searchTableView reloadData];
     return YES;
 }
 

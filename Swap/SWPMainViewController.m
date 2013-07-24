@@ -194,7 +194,7 @@
 {
     static NSString *trendingTableIdentifier = @"TrendingTableIdentifier";
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:trendingTableIdentifier];
+    UITableViewCell *cell = [_trendingTable dequeueReusableCellWithIdentifier:trendingTableIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:trendingTableIdentifier];
