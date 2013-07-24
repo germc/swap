@@ -13,6 +13,9 @@
 @end
 
 @implementation SWPSearchViewController
+{
+    NSMutableArray *results;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +30,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    _searchField.delegate = self;
+    
+    _searchTableView.delegate = self;
+    _searchTableView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,7 +46,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 20;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
