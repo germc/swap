@@ -21,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
     self.searchField.delegate = self;
     
     self.searchTableView.delegate = self;
@@ -31,7 +31,6 @@
     [locationManager startUpdatingLocation];
     
     [self searchForPOI];
-//    [_searchTableView reloadData];
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:recognizer];
@@ -46,10 +45,10 @@
 -(void)searchForPOI
 {
     NSString *urlString;
-    if ([self.searchField.text isEqualToString:@""]) {
-        urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/trending?ll=%f,%f&oauth_token=OE1Q3UHXI2TB1PEAL4JM0CYX33OPX12WPPI5OOX5CIYA5LN1&v=20130708", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
-    } else {
+    if (self.searchField.text.length > 0) {
         urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&query=%@&oauth_token=OE1Q3UHXI2TB1PEAL4JM0CYX33OPX12WPPI5OOX5CIYA5LN1&v=20130708", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude, [self.searchField.text stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
+    } else {
+        urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/trending?ll=%f,%f&oauth_token=OE1Q3UHXI2TB1PEAL4JM0CYX33OPX12WPPI5OOX5CIYA5LN1&v=20130708", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
     }
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -63,8 +62,11 @@
         NSMutableDictionary *resultData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         
         results = [[resultData objectForKey:@"response"] objectForKey:@"venues"];
+        [self.searchTableView reloadData];
+        
+        // add activity indicators
+        
     }];
-    [self.searchTableView reloadData];
 }
 
 #pragma mark UITableView delegates
@@ -96,9 +98,8 @@
     [self dismissKeyboard];
     if (self.searchField.text.length > 0) {
         [self searchForPOI];
-//        [_searchTableView reloadData];
     }
-    [self.searchTableView reloadData];
+//    [self.searchTableView reloadData];
     return YES;
 }
 
