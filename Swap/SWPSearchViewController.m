@@ -40,6 +40,7 @@
     [locationManager startUpdatingLocation];
     
     [self searchForPOI];
+    [_searchTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,8 +57,6 @@
     } else {
         urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&query=%@&oauth_token=OE1Q3UHXI2TB1PEAL4JM0CYX33OPX12WPPI5OOX5CIYA5LN1&v=20130708", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude, self.searchField.text];
     }
-
-    NSLog(@"%@", urlString);
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -77,13 +76,26 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return [results count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"daf"];
     return cell;
+}
+
+#pragma mark UITextField delegates
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.searchField resignFirstResponder];
+    if (self.searchField.text.length > 0) {
+        [self searchForPOI];
+        [_searchTableView reloadData];
+    }
+    
+    return YES;
 }
 
 @end
