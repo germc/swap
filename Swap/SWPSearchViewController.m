@@ -15,6 +15,7 @@
 @implementation SWPSearchViewController
 {
     NSMutableArray *results;
+    CLLocationManager *locationManager;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +35,9 @@
     
     _searchTableView.delegate = self;
     _searchTableView.dataSource = self;
+    
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
