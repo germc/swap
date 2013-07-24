@@ -86,7 +86,8 @@
 //        NSLog(@"%@", resultData);
         
         results = [[resultData objectForKey:@"response"] objectForKey:@"venues"];
-//        NSLog(@"%@", results);
+//        NSLog(@"%d", [results count]);
+        [_trendingTable reloadData];
         
         
         for (NSDictionary *item in results)
@@ -186,7 +187,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return [results count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
