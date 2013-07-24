@@ -41,6 +41,9 @@
     
     [self searchForPOI];
     [_searchTableView reloadData];
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:recognizer];
 }
 
 - (void)didReceiveMemoryWarning
